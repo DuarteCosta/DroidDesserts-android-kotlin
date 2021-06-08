@@ -29,6 +29,7 @@
         android:text="@string/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderss" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -87,17 +88,17 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/address"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.423"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="156dp"
+        android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:ems="10"
@@ -146,30 +147,40 @@
 
         <RadioButton
             android:id="@+id/same"
-            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/same_day_delivery"
-            android:focusable="true" />
+            android:text="@string/same_day_delivery" />
 
         <RadioButton
             android:id="@+id/next"
-            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/next_day_delivery"
-            android:focusable="true" />
+            android:text="@string/next_day_delivery" />
 
         <RadioButton
             android:id="@+id/pickUp"
-            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/pick_up"
-            android:focusable="true" />
+            android:text="@string/pick_up" />
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/phone_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
