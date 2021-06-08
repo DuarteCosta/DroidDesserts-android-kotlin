@@ -18,8 +18,8 @@ class OrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         // Get the intent and its data.
         val intent = intent.extras
-        var messag = intent?.getString("messag")
-        orderss.text = messag
+        val mes = intent?.getString("mes")
+        orderss.text = mes
         val phoneLabels = resources.getStringArray(R.array.labels_array)
 
         if (phone_text != null) {
@@ -29,6 +29,10 @@ class OrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             )
             phone_text.adapter = adapter
         }
+
+        setSupportActionBar(my_toolbar2)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
 
     }

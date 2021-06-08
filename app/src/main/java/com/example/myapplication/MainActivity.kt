@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun buyView(view: View){
         val intent = Intent(this, OrderActivity::class.java)
-        intent.putExtra("messag",message)
+        intent.putExtra("mes",message)
         startActivity(intent)
     }
 
