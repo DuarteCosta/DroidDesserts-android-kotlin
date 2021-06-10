@@ -1,17 +1,28 @@
 package com.example.myapplication
 
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_order.*
 
 
 class OrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
+    private val channelID = "com.example.myapplication"
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
@@ -33,7 +44,13 @@ class OrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setSupportActionBar(my_toolbar2)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        notificationChannel()
 
+        floats2.setOnClickListener {
+
+            sendN()
+
+        }
 
     }
 
@@ -64,5 +81,31 @@ class OrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun notificationChannel() {
+        val name = "Order"
+        val descriptionT = "You have ordered"
+        val important = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(channelID,name,important).apply {
+            description= descriptionT
+        }
+        val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+    }
+
+    private fun sendN(){
+
+        val builder = NotificationCompat.Builder(this, channelID)
+            .setSmallIcon(R.drawable.ic_shopping_cart)
+            .setContentTitle("Droid Order")
+            .setContentText("it's on its way")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this)){
+            notify(101, builder.build())
+        }
     }
 }
